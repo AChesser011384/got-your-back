@@ -80,6 +80,11 @@ the specified folder should exist and should have been used in a previous GYB ba
 
 Note that if you perform a restore to the same Gmail account, GYB will not create duplicate messages, instead you'll only see messages restored which were backed up by GYB then later deleted from the Gmail account.
 
+You can also use the "--label-restored NEWLABELNAME" argument to set a label on all restored messages. For example:
+{{{
+gyb --email youremail@gmail.com --action restore --label-restored "Restored 05-09-11"
+}}}
+
 = Step 6: Selective Backups With Gmail Searching =
 GYB supports selective backups using Gmail style mailbox searches. For example, suppose you wanted to only backup important or starred messages:
 {{{
