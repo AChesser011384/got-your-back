@@ -80,9 +80,29 @@ the specified folder should exist and should have been used in a previous GYB ba
 
 Note that if you perform a restore to the same Gmail account, GYB will not create duplicate messages, instead you'll only see messages restored which were backed up by GYB then later deleted from the Gmail account.
 
-= Step 6: Selective Backups With Gmail Searching" =
+= Step 6: Selective Backups With Gmail Searching =
 GYB supports selective backups using Gmail style mailbox searches. For example, suppose you wanted to only backup important or starred messages:
 {{{
 gyb --email youremail@gmail.com --search "is:important OR is:starred"
 }}}
 would cause GYB to only backup messages matching that search query. Virtually any Gmail search will work with GYB. The only exception being that specifying "in:anywhere" will not backup Trash and Spam, there's currently no way to backup Trash and Spam with GYB. [http://mail.google.com/support/bin/answer.py?answer=7190 See here for a detailed article] on all of the possible Gmail Search parameters.
+
+Note that Gmail searches also work with the "--action estimate" command. Suppose you wanted to know how much space emails with .PDF attachment are using in your Gmail mailbox:
+{{{
+gyb --action estimate --search "filename:PDF"
+}}}
+
+will estimate the size of messages with PDF attachments only. Try substituting DOC, JPG, ZIP and other common file attachments for PDF.
+
+= Google Apps Business and Education Admins: Backup, Restore and Estimate your user's email =
+If you're using Google Apps Business or Education Edition, it's possible to perform GYB Backups, Restores and Estimates for your Google Apps users without needing to know their password. This works because GYB can make use of a special Google Apps feature called Two-Legged OAuth. Just run:
+{{{
+gyb --email yourusersemail@yourcompany.com --two-legged two-legged-key.txt
+}}}
+the first time you run this command, the file you specify for "two-legged-key.txt" will not exist. GYB will prompt you for your domain's OAuth Consumer Key and OAuth Consumer Secret. You can learn what these are by going to:
+
+https://www.google.com/a/cpanel/PUT-YOUR-DOMAIN-HERE.COM/SetupOAuth
+
+once you provide these values to GYB, they'll be saved to the file you specified. You'll then be able to perform backup, restore or estimate actions for any of your Google Apps users as long as you specify the "--two-legged <filename>" option.
+
+WARNING: Your OAuth Consumer Key and Secret offer very powerful control over your Google Apps domain. Do not use this option on a computer you do not trust! Do not leave the two legged file in places where others can find it! If you suspect your consumer key and secret have been stolen, use the "Regenerate OAuth Consumer Key" button on the page above to invalidate the old secret.
