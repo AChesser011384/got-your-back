@@ -1,4 +1,5 @@
 #summary Downloading, Installing and Using GYB
+#labels Featured
 <wiki:toc max_depth="2" />
 
 _*Comments have been turned off for these help pages, please post your questions and comments to the [http://groups.google.com/group/got-your-back Mailing List]*_
