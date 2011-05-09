@@ -31,7 +31,7 @@ cd \gyb
 }}}
 this works if you extracted GYB to c:\gyb. If you extracted it elsewhere, specify that location instead. Now type:
 {{{
-gyb -e youremail@gmail.com -a estimate
+gyb --email youremail@gmail.com --action estimate
 }}}
 except use your real email address in place of youremail@gmail.com. GYB will open up a web page in order for you to grant GYB access to your Gmail account. This authorization makes it possible for GYB to connect to your Google Account via IMAP and SMTP only, GYB will have no rights to any of your other Google Data. Make sure you are logged in to the Google account you specified before granting access. Once you've granted access, switch back to the command prompt window and hit enter. If no errors are printed, GYB should start estimating the size of your Gmail mailbox. Note that GYB only estimates the size of messages in the All Mail folder, it does not check Spam or Trash although these do count against your Gmail quota displayed at the bottom of your Gmail inbox. To accurately compare GYB's estimate and the Gmail inbox web page quota display, first empty your Trash and Spam folders.
 
@@ -44,7 +44,7 @@ cd ~/gyb
 }}}
 this will work if you extracted the GYB files to a subfolder named gyb in your home directory. If you extracted them elsewhere, replace ~/gyb with the full path to them. Now run:
 {{{
-python gyb -e youremail@gmail.com
+python gyb --email youremail@gmail.com
 }}}
 If you get an error about python not being a valid program, make sure you have the Python interpreter installed on your machine. All Macs and most Linux installs should include Python but if not, you may need to research how to install it on your OS/Distribution.
 
@@ -56,8 +56,33 @@ alias gyb="python gyb.py"
 }}}
 Now when we can just type commands like:
 {{{
-gyb -e myemail@gmail.com -a estimate
+gyb --email myemail@gmail.com --action estimate
 }}}
 you'll need to type the alias command each time you open a Terminal to run GYB. Congratulations, you're up and running with GYB! You probably want to move on to [#Step_4:_Performing_A_Backup performing a backup] now.
 
 = Step 4: Performing A Backup =
+A basic GYB backup is very easy to start. Just run:
+{{{
+gyb --email youremail@gmail.com --action backup
+}}}
+the "--action backup" is not strictly necessary since GYB defaults to backing up if an action is not specified. Assuming you've already granted GYB access to your Gmail messages, GYB will load the access token from youremail@gmail.com.cfg and use it to get access to your messgaes. By default, GYB will download and save all messages to a folder named "GYB-GMail-Backup-youremail@gmail.com". You can specify another folder for GYB to use with the --folder argument:
+{{{
+gyb --email youremail@gmail.com --folder "C:\Users\John\Documents\Johns_Gmail_Backup"
+}}}
+GYB will keep you update you as the backup progresses.
+
+= Step 5: Performing a Restore =
+Restores on GYB are also very simple:
+{{{
+gyb --email youremail@gmail.com --action restore --folder "c:\my_gmail_backup"
+}}}
+the specified folder should exist and should have been used in a previous GYB backup. If not specified, restores default to using the GYB-GMail-Backup-youremail@gmail.com folder just like the backup does. GYB will connect to your Gmail account and perform the restore of all messages in the backup folder.
+
+Note that if you perform a restore to the same Gmail account, GYB will not create duplicate messages, instead you'll only see messages restored which were backed up by GYB then later deleted from the Gmail account.
+
+= Step 6: Selective Backups With Gmail Searching"
+GYB supports selective backups using Gmail style mailbox searches. For example, suppose you wanted to only backup important or starred messages:
+{{{
+gyb --email youremail@gmail.com --search "is:important OR is:starred"
+}}}
+would cause GYB to only backup messages matching that search query. Virtually any Gmail search will work with GYB. The only exception being that specifying "in:anywhere" will not backup Trash and Spam, there's currently no way to backup Trash and Spam with GYB. [http://mail.google.com/support/bin/answer.py?answer=7190 See here for a detailed article] on all of the possible Gmail Search parameters.
