@@ -80,7 +80,7 @@ the specified folder should exist and should have been used in a previous GYB ba
 
 Note that if you perform a restore to the same Gmail account, GYB will not create duplicate messages, instead you'll only see messages restored which were backed up by GYB then later deleted from the Gmail account.
 
-= Step 6: Selective Backups With Gmail Searching"
+= Step 6: Selective Backups With Gmail Searching" =
 GYB supports selective backups using Gmail style mailbox searches. For example, suppose you wanted to only backup important or starred messages:
 {{{
 gyb --email youremail@gmail.com --search "is:important OR is:starred"
