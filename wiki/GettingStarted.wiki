@@ -85,7 +85,7 @@ You can also use the "--label-restored NEWLABELNAME" argument to set a label on 
 gyb --email youremail@gmail.com --action restore --label-restored "Restored 05-09-11"
 }}}
 
-= Step 6: Selective Backups With Gmail Searching =
+= Selective Backups With Gmail Searching =
 GYB supports selective backups using Gmail style mailbox searches. For example, suppose you wanted to only backup important or starred messages:
 {{{
 gyb --email youremail@gmail.com --search "is:important OR is:starred"
