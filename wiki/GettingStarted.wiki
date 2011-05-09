@@ -9,21 +9,21 @@ Got Your Back (GYB) is a command line tool that backs up and restores your Gmail
 
 GYB works with Gmail.com and Google Apps accounts.
 
-= Step 2: Download GYB =
+= Step 1: Download GYB =
 == Windows Users ==
 Head to the [http://code.google.com/p/got-your-back/downloads/list Downloads page] and download the latest Windows version of GYB, do not download the Python Source version (unless you really know what you're doing).
 
 == Mac and Linux Users ==
 Head to the [http://code.google.com/p/got-your-back/downloads/list Downloads page] and download the latest Python source version of GYB, do not download the Windows version.
 
-= Step 3: Extract GYB =
+= Step 2: Extract GYB =
 == Windows Users ==
 Use the archive extraction tool of your choice to extract the files from the GYB .zip you downloaded. Windows XP and higher have a built in tool that works just fine. When specifying where to extract GYB, I suggest extracting directly to C:\ so that the files will reside in C:\gyb. Once completed, GYB should exist at C:\gyb\gyb.exe
 
 == Mac and Linux Users ==
 Use the archive extraction tool of your choice to extract the files from the GYB .zip you downloaded. I suggest extracting the files to a sub-folder of your home directory.
 
-= Step 4: Running GYB for the First Time =
+= Step 3: Running GYB for the First Time =
 == Windows Users ==
 Open a command prompt on your computer. You can do this by going to Start -> Programs -> Accessories -> Command Prompt or by opening the Run... dialog on the start menu and typing CMD then enter. Now change to the directory where you extracted GAM. The command to change directories looks like:
 {{{
@@ -60,4 +60,4 @@ gyb -e myemail@gmail.com -a estimate
 }}}
 you'll need to type the alias command each time you open a Terminal to run GYB. Congratulations, you're up and running with GYB! You probably want to move on to [#Performing_A_Backup performing a backup] now.
 
-= Step 5: Performing A Backup =
+= Step 4: Performing A Backup =
