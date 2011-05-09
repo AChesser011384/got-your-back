@@ -1,0 +1,63 @@
+#summary Downloading, Installing and Using GYB
+<wiki:toc max_depth="2" />
+
+_*Comments have been turned off for these help pages, please post your questions and comments to the [http://groups.google.com/group/got-your-back Mailing List]*_
+
+= Introduction =
+
+Got Your Back (GYB) is a command line tool that backs up and restores your Gmail account. This page provides simple instructions for downloading, installing and starting to use GYB.
+
+GYB works with Gmail.com and Google Apps accounts.
+
+= Step 2: Download GYB =
+== Windows Users ==
+Head to the [http://code.google.com/p/got-your-back/downloads/list Downloads page] and download the latest Windows version of GYB, do not download the Python Source version (unless you really know what you're doing).
+
+== Mac and Linux Users ==
+Head to the [http://code.google.com/p/got-your-back/downloads/list Downloads page] and download the latest Python source version of GYB, do not download the Windows version.
+
+= Step 3: Extract GYB =
+== Windows Users ==
+Use the archive extraction tool of your choice to extract the files from the GYB .zip you downloaded. Windows XP and higher have a built in tool that works just fine. When specifying where to extract GYB, I suggest extracting directly to C:\ so that the files will reside in C:\gyb. Once completed, GYB should exist at C:\gyb\gyb.exe
+
+== Mac and Linux Users ==
+Use the archive extraction tool of your choice to extract the files from the GYB .zip you downloaded. I suggest extracting the files to a sub-folder of your home directory.
+
+= Step 4: Running GYB for the First Time =
+== Windows Users ==
+Open a command prompt on your computer. You can do this by going to Start -> Programs -> Accessories -> Command Prompt or by opening the Run... dialog on the start menu and typing CMD then enter. Now change to the directory where you extracted GAM. The command to change directories looks like:
+{{{
+cd \gyb
+}}}
+this works if you extracted GYB to c:\gyb. If you extracted it elsewhere, specify that location instead. Now type:
+{{{
+gyb -e youremail@gmail.com -a estimate
+}}}
+except use your real email address in place of youremail@gmail.com. GYB will open up a web page in order for you to grant GYB access to your Gmail account. This authorization makes it possible for GYB to connect to your Google Account via IMAP and SMTP only, GYB will have no rights to any of your other Google Data. Make sure you are logged in to the Google account you specified before granting access. Once you've granted access, switch back to the command prompt window and hit enter. If no errors are printed, GYB should start estimating the size of your Gmail mailbox. Note that GYB only estimates the size of messages in the All Mail folder, it does not check Spam or Trash although these do count against your Gmail quota displayed at the bottom of your Gmail inbox. To accurately compare GYB's estimate and the Gmail inbox web page quota display, first empty your Trash and Spam folders.
+
+Congratulations, you're up and running with GYB! You probably want to move on to [#Performing_A_Backup performing a backup] now.
+
+== Mac and Linux Users ==
+Open up a terminal window on your computer. On Linux, this is generally under Accessories -> Terminal. On Mac, it's under Applications -> Utilities -> Terminal. Now change to the directory where you extracted GYB. Try:
+{{{
+cd ~/gyb
+}}}
+this will work if you extracted the GYB files to a subfolder named gyb in your home directory. If you extracted them elsewhere, replace ~/gyb with the full path to them. Now run:
+{{{
+python gyb -e youremail@gmail.com
+}}}
+If you get an error about python not being a valid program, make sure you have the Python interpreter installed on your machine. All Macs and most Linux installs should include Python but if not, you may need to research how to install it on your OS/Distribution.
+
+GYB will open up a web page in order for you to grant GYB access to your Gmail account. This authorization makes it possible for GYB to connect to your Google Account via IMAP and SMTP only, GYB will have no rights to any of your other Google Data. Make sure you are logged in to the Google account you specified before granting access. Once you've granted access, switch back to the command prompt window and hit enter. If no errors are printed, GYB should start estimating the size of your Gmail mailbox. Note that GYB only estimates the size of messages in the All Mail folder, it does not check Spam or Trash although these do count against your Gmail quota displayed at the bottom of your Gmail inbox. To accurately compare GYB's estimate and the Gmail inbox web page quota display, first empty your Trash and Spam folders.
+
+Instead of needing to type "python gyb.py" for every command, we can use the alias command to shorten it to just "gyb":
+{{{
+alias gyb="python gyb.py"
+}}}
+Now when we can just type commands like:
+{{{
+gyb -e myemail@gmail.com -a estimate
+}}}
+you'll need to type the alias command each time you open a Terminal to run GYB. Congratulations, you're up and running with GYB! You probably want to move on to [#Performing_A_Backup performing a backup] now.
+
+= Step 5: Performing A Backup =
