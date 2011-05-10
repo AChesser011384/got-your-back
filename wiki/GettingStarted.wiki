@@ -45,7 +45,7 @@ cd ~/gyb
 }}}
 this will work if you extracted the GYB files to a subfolder named gyb in your home directory. If you extracted them elsewhere, replace ~/gyb with the full path to them. Now run:
 {{{
-python gyb --email youremail@gmail.com
+python gyb.py --email youremail@gmail.com
 }}}
 If you get an error about python not being a valid program, make sure you have the Python interpreter installed on your machine. All Macs and most Linux installs should include Python but if not, you may need to research how to install it on your OS/Distribution.
 
