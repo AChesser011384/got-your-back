@@ -111,11 +111,19 @@ Supplying labels with a "backup" or "estimate" is equivalent to specifying a sea
 Specifying labels with a restore is the only way to limit the restore to particular labels. 
 
 = Advanced options =
+== --compress ==
 The *-C* or *--compress* option will attempt to use compression in the connection to Gmail, reducing the bandwidth used to complete the requested actions. In some cases, it may also reduce the time required.
 
+== --resume ==
 GYB keeps a record of messages restored to each account. The *--resume* switch will make GYB skip already completed messages during a restore. This avoids the need to upload the same messages again if the restore was interrupted.
 
+== --fast-incremental ==
 By default, GYB will refresh the stored labels and flags for messages that have already been backed up, just in case they changed after the backup. This step can be skipped by supplying the *-F* or *--fast-incremental* switch on the command line.
+
+== --reindex ==
+GYB keeps track of the messages backed up by using the IMAP UID values for the messages. It does not happen often, but it is sometimes necessary to reorganise an IMAP mailbox and assign new UIDs. When this happens, GYB will refuse to use the existing folder for further backups. The *--reindex* action will rebuild the UID index using information from the message headers. It is slow, but faster than re-downloading the full account to start a new backup.
+
+(Another option is to make a new backup folder, but include a search for "after:" some recent date for that folder. If it is ever necessary to restore the mailbox, you would then need to restore from both folders.)
 
 = Google Apps Business and Education Admins: Backup, Restore and Estimate your user's email =
 If you're using Google Apps Business or Education Edition, it's possible to perform GYB Backups, Restores and Estimates for your Google Apps users without needing to know their password. This works because GYB can make use of a special Google Apps feature called Two-Legged OAuth. Just run:
