@@ -361,8 +361,7 @@ def rebuildUIDTable(imapconn, sqlconn):
                 '(UID INTERNALDATE BODY.PEEK[HEADER.FIELDS '
                              '(FROM TO SUBJECT MESSAGE-ID)])')
     if t != 'OK':
-      print "\nError: failed to retrieve messages."
-      print "%s %s" % (t, d)
+      print "Error: failed to retrieve messages."
       sys.exit(5)
     for extras, header in (x for x in d if x != ')'):
       uid, message_date = re.search('UID ([0-9]*) (INTERNALDATE \".*\")', 
@@ -447,7 +446,6 @@ def get_message_size(imapconn, uids):
   t, d = imapconn.uid('FETCH', uid_string, '(RFC822.SIZE)')
   if t != 'OK':
     print "Failed to retrieve size for message %s" % uid
-    print "%s %s" % (t, d)
     exit(9)
   total_size = 0
   for x in d:
@@ -586,8 +584,7 @@ def main(argv):
           if r != 'OK':
             bad_count = bad_count + 1
             if bad_count > 7:
-              print "\nError: failed to retrieve messages."
-              print "%s %s" % (r, d)
+              print "Error: failed to retrieve messages."
               sys.exit(5)
             sleep_time = math.pow(2, bad_count)
             sys.stdout.write("\nServer responded with %s %s, will retry in %s seconds" % (r, d, str(sleep_time)))
@@ -688,8 +685,7 @@ def main(argv):
           if r != 'OK':
             bad_count = bad_count + 1
             if bad_count > 7:
-              print "\nError: failed to retrieve messages."
-              print "%s %s" % (r, d)
+              print "Error: failed to retrieve messages."
               sys.exit(5)
             sleep_time = math.pow(2, bad_count)
             sys.stdout.write("\nServer responded with %s %s, will retry in %s seconds" % (r, d, str(sleep_time)))
@@ -831,22 +827,22 @@ def main(argv):
         try:
           r, d = imapconn.append(ALL_MAIL, flags_string, message_internaldate_seconds, full_message)
           if r != 'OK':
-            print '\nError: %s %s' % (r,d)
+            print 'Error: %s' % r
             sys.exit(5)
           restored_uid = int(re.search('^[APPENDUID [0-9]* ([0-9]*)] \(Success\)$', d[0]).group(1))
           if len(labels) > 0:
             labels_string = '("'+'" "'.join(labels)+'")'
             r, d = imapconn.uid('STORE', restored_uid, '+X-GM-LABELS', labels_string)
             if r != 'OK':
-              print '\nGImap Set Message Labels Failed: %s %s' % (r, d)
+              print 'GImap Set Message Labels Failed: %s' % r
               sys.exit(33)
           break
-        except imaplib.IMAP4.abort, e:
-          print '\nimaplib.abort error:%s, retrying...' % e
+        except imaplib.IMAP4.abort:
+          print 'imaplib.abort error, retrying...'
           imapconn = gimaplib.ImapConnect(generateXOAuthString(key, secret, options.email, options.two_legged), options.debug, options.compress)
           imapconn.select(ALL_MAIL)
-        except socket.error, e:
-          print '\nsocket.error:%s, retrying...' % e
+        except socket.error:
+          print 'socket.error, retrying...'
           imapconn = gimaplib.ImapConnect(generateXOAuthString(key, secret, options.email, options.two_legged), options.debug, options.compress)
           imapconn.select(ALL_MAIL)
       #Save the fact that it is completed
