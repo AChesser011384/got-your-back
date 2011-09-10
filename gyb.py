@@ -133,13 +133,12 @@ def SetupOptionParser():
     help='Google Apps Business and Education accounts only. Use administrator two legged OAuth to authenticate as end user.')
   parser.add_option('-C', '--compress',
     dest='compress',
-    action='count',
-    default=1,
+    action='store_true',
     help='Optional: enable network compression')
   parser.add_option('-c', '--no-compress',
     dest='compress',
-    action='store_const',
-    const=0,
+    action='store_false',
+    default=True,
     help='Optional: disable network compression')
   parser.add_option('-F', '--fast-incremental',
     dest='refresh',
@@ -615,7 +614,8 @@ def main(argv):
           imapconn.select(ALL_MAIL, readonly=True)
       for everything_else_string, full_message in (x for x in d if x != ')'):
         search_results = re.search('X-GM-LABELS \((.*)\) UID ([0-9]*) (INTERNALDATE \".*\") (FLAGS \(.*\))', everything_else_string)
-        labels = shlex.split(search_results.group(1))
+        labels_str = search_results.group(1).replace('"', '\\"').replace("'", "\\'")
+        labels = shlex.split(labels_str)
         uid = search_results.group(2)
         message_date_string = search_results.group(3)
         message_flags_string = search_results.group(4)
@@ -913,8 +913,7 @@ def main(argv):
     sqlconn.close()
   except NameError:
     pass
-  if options.compress > 1:
-    imapconn.display_stats()
+  #imapconn.display_stats()
   imapconn.logout()
   
 if __name__ == '__main__':
