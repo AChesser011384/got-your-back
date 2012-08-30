@@ -134,6 +134,6 @@ the first time you run this command, the file you specify for "two-legged-key.tx
 
 https://www.google.com/a/cpanel/PUT-YOUR-DOMAIN-HERE.COM/SetupOAuth
 
-once you provide these values to GYB, they'll be saved to the file you specified. You'll then be able to perform backup, restore or estimate actions for any of your Google Apps users as long as you specify the "--two-legged <filename>" option.
+once you provide these values to GYB, they'll be saved to the file you specified. You'll then be able to perform backup, restore or estimate actions for any of your Google Apps users as long as you specify the "--two-legged two-legged-key.txt" option.
 
 WARNING: Your OAuth Consumer Key and Secret offer very powerful control over your Google Apps domain. Do not use this option on a computer you do not trust! Do not leave the two legged file in places where others can find it! If you suspect your consumer key and secret have been stolen, use the "Regenerate OAuth Consumer Key" button on the page above to invalidate the old secret.
