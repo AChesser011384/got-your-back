@@ -136,4 +136,14 @@ https://www.google.com/a/cpanel/PUT-YOUR-DOMAIN-HERE.COM/SetupOAuth
 
 once you provide these values to GYB, they'll be saved to the file you specified. You'll then be able to perform backup, restore or estimate actions for any of your Google Apps users as long as you specify the "--two-legged two-legged-key.txt" option.
 
+If you are migrating data to or from users in a secondary domain, you'll need to take some additional steps. Follow the instructions at:
+
+http://www.google.com/support/enterprise/static/gapps/docs/admin/en/gapps_exchange_migration/prep_config_gapps.html
+
+but at Step 7 for the multidomain procudure, you should only need to specify the scope of:
+
+https://mail.google.com/
+
+once you've followed these steps, migrating data to or from a secondary Google Apps account should work with 2-legged OAuth.
+
 WARNING: Your OAuth Consumer Key and Secret offer very powerful control over your Google Apps domain. Do not use this option on a computer you do not trust! Do not leave the two legged file in places where others can find it! If you suspect your consumer key and secret have been stolen, use the "Regenerate OAuth Consumer Key" button on the page above to invalidate the old secret.
