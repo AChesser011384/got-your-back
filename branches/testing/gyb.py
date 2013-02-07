@@ -625,8 +625,7 @@ def main(argv):
         message_flags = imaplib.ParseFlags(message_flags_string)
         message_file_name = "%s-%s.eml" % (uidvalidity, uid)
         message_rel_path = os.path.join(str(message_date.tm_year), 
-                                        str(message_date.tm_mon), 
-                                        str(message_date.tm_mday))
+                                        str(message_date.tm_mon)) 
         message_rel_filename = os.path.join(message_rel_path, 
                                             message_file_name)
         message_full_path = os.path.join(options.folder, 
