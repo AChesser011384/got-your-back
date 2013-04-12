@@ -146,19 +146,19 @@ If you're using Google Apps for Business or Education Edition, it's possible to 
 
 There are a few steps involved with creating and authorizing a service account for GYB.
 
-# Go to the [https://code.google.com/apis/console Google API Console]
-# Click "Create Project"
-# In the list of "All Services", scroll down to "Groups Migration API" and click the switch to toggle it ON. Agree to the terms.
-# Go to "API Access" menu to the left.
-# Click "Create an OAuth 2.0 client ID..." big blue button.
-# Enter a product name (other details are optional). Click Next.
-# Select the "Service Account" radio button. Click "Create client ID"
-# Click "Download private key". Save it to the same location as gyb.exe or gyb.py. Be sure to rename the file to privatekey.p12 (take off all the random characters).
-# Make a note of the Client ID and Email Address Values. You'll need them later so either copy them into Notepad or keep the API console window open in another tab.
-# Go to your Google Apps Control Panel.
-# Navigate to Advanced Tools -> Manage third party OAuth Client access.
-# For Client Name, enter the Client ID you recorded above. For API Scopes, enter exactly: {{{https://mail.google.com/,https://www.googleapis.com/auth/apps.groups.migration}}}
-# Now you can run GYB with the service account option. Specify your service account email address from above when using --service-account.
+ # Go to the [https://code.google.com/apis/console Google API Console]
+ # Click "Create Project"
+ # In the list of "All Services", scroll down to "Groups Migration API" and click the switch to toggle it ON. Agree to the terms.
+ # Go to "API Access" menu to the left.
+ # Click "Create an OAuth 2.0 client ID..." big blue button.
+ # Enter a product name (other details are optional). Click Next.
+ # Select the "Service Account" radio button. Click "Create client ID"
+ # Click "Download private key". Save it to the same location as gyb.exe or gyb.py. Be sure to rename the file to privatekey.p12 (take off all the random characters).
+ # Make a note of the Client ID and Email Address Values. You'll need them later so either copy them into Notepad or keep the API console window open in another tab.
+ # Go to your Google Apps Control Panel.
+ # Navigate to Advanced Tools -> Manage third party OAuth Client access.
+ # For Client Name, enter the Client ID you recorded above. For API Scopes, enter exactly: {{{https://mail.google.com/,https://www.googleapis.com/auth/apps.groups.migration}}}
+ # Now you can run GYB with the service account option. Specify your service account email address from above when using --service-account.
 
 Try running:
 {{{
