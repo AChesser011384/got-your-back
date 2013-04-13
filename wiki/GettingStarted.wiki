@@ -119,9 +119,12 @@ GYB keeps track of the messages backed up by using the IMAP UID values for the m
 Google Apps for Business and Education Only. This feature allows you to restore messages to a Google Group rather than a user mailbox. It's important to note that:
  * Message labels, read/unread status, stars and other metadata are not preserved with restore-group.
  * There is no API or method to extract or backup messages stored in Google Groups. GYB can restore messages to a group but cannot backup message in a group, it's a one-way process.
+ * The Groups Migration API supports a maximum message size of 16mb so not all Gmail-stored messages can be imported into a group.
  * Groups have no quota! If you're okay with the above issues, you can offload an unlimited amount of data to a group. This may be a good solution for users approaching their 25gb quota in Gmail.
 
 This option requires the --use-admin option below be specified. The --email option should be the Google Group to restore messages into. Archiving for the group should be enabled.
+
+A good use case for restore-group would be a user who is nearing Gmail quota. You could do a selective backup of the user's mailbox with a GYB backup using {{{--search before:2011/04/13 smaller:16M}}} to get only messages older than 2 years and smaller than 16mb. Then restore the messages to a Google Group and give the user exclusive access to the new group. Finally, free up the user's mailbox by performing a purge using the same parameters. I'd also recommend holding on to the local backup of the user's mail should you ever wish to restore to the mailbox.
 
 == --use-admin ==
 Specify the Google Apps admin to utilize when restoring messages to a group with --action restore-group. This user should be a super administrator, delegated admins do not have sufficient privileges to perform group restores.
