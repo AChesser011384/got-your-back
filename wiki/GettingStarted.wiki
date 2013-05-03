@@ -71,7 +71,7 @@ gyb --email youremail@gmail.com --action backup
 }}}
 the "--action backup" is not strictly necessary since GYB defaults to backing up if an action is not specified. Assuming you've already granted GYB access to your Gmail messages, GYB will load the access token from youremail@gmail.com.cfg and use it to get access to your messages. By default, GYB will download and save all messages to a folder named "GYB-GMail-Backup-youremail@gmail.com". You can specify another folder for GYB to use with the --local-folder argument:
 {{{
-gyb --email youremail@gmail.com --folder "C:\Users\John\Documents\Johns_Gmail_Backup"
+gyb --email youremail@gmail.com --local-folder "C:\Users\John\Documents\Johns_Gmail_Backup"
 }}}
 GYB will keep you update you as the backup progresses.
 
