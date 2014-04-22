@@ -149,15 +149,17 @@ If you're using Google Apps for Business or Education Edition, it's possible to 
 
 There are a few steps involved with creating and authorizing a service account for GYB.
 
- # Go to the [https://code.google.com/apis/console Google API Console]
+ # Go to the [https://cloud.google.com/console Google Cloud Console]
  # Click "Create Project"
- # In the list of "All Services", scroll down to "Groups Migration API" and click the switch to toggle it ON. Agree to the terms.
- # Go to "API Access" menu to the left.
- # Click "Create an OAuth 2.0 client ID..." big blue button.
- # Enter a product name (other details are optional). Click Next.
- # Select the "Service Account" radio button. Click "Create client ID"
- # Click "Download private key". Save it to the same location as gyb.exe or gyb.py. Be sure to rename the file to privatekey.p12 (take off all the random characters).
- # Make a note of the Client ID and Email Address Values. You'll need them later so either copy them into Notepad or keep the API console window open in another tab.
+ # Give your project a name and a unique project ID
+ # One the project is finished being created, click "APIs & auth" to the left
+ # In the list of APIs, scroll down to "Groups Migration API" and click the switch to toggle it ON. Agree to the terms.
+ # Go to "Credentials" menu to the left.
+ # Click the "CREATE NEW CLIENT ID" red button.
+ # Choose the "Service Account" radio button and click the "Create Client ID" blue button.
+ # Your browser will download a file. Change the downloaded file name to privatekey.p12 and save it to the same location as gyb.exe or gyb.py
+ # click the blue "Okay, got it" button.
+ # Under the *Service Account* section,* make a note of the Client ID and Email Address Values. You'll need them later so either copy them into Notepad or keep the API console window open in another tab. Make sure you're using the Service Account values, not the ones under "Compute Engine and App Engine"
  # Go to your Google Apps Control Panel.
  # Navigate to Advanced Tools -> Manage third party OAuth Client access.
  # For Client Name, enter the Client ID you recorded above. For API Scopes, enter exactly: {{{https://mail.google.com/,https://www.googleapis.com/auth/apps.groups.migration}}}
@@ -167,5 +169,7 @@ Try running:
 {{{
 gyb --email yourusersemail@yourcompany.com --service-account 123456789@developer.gserviceaccount.com
 }}}
+
+in this example, replace 123456789@developer.gserviceaccount.com with *your service account email address from the cloud console.*
 
 *WARNING:* Service Accounts offer very powerful control over your Google Apps domain. Do not use this option on a computer you do not trust! Do not leave the privatekey.p12 file in places where others can find it! If you suspect your Service Account has been stolen, delete the API project in the API console and unauthorize it's access to your domain.
