@@ -159,7 +159,7 @@ There are a few steps involved with creating and authorizing a service account f
  # Choose the "Service Account" radio button and click the "Create Client ID" blue button.
  # Your browser will download a file. Change the downloaded file name to privatekey.p12 and save it to the same location as gyb.exe or gyb.py
  # click the blue "Okay, got it" button.
- # Under the *Service Account* section,* make a note of the Client ID and Email Address Values. You'll need them later so either copy them into Notepad or keep the API console window open in another tab. Make sure you're using the Service Account values, not the ones under "Compute Engine and App Engine"
+ # Under the *Service Account* section*, make a note of the Client ID and Email Address Values. You'll need them later so either copy them into Notepad or keep the API console window open in another tab. Make sure you're using the Service Account values, not the ones under "Compute Engine and App Engine"
  # Go to your Google Apps Control Panel.
  # Navigate to Advanced Tools -> Manage third party OAuth Client access.
  # For Client Name, enter the Client ID you recorded above. For API Scopes, enter exactly: {{{https://mail.google.com/,https://www.googleapis.com/auth/apps.groups.migration}}}
