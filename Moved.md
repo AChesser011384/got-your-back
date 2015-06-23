@@ -1,0 +1,1 @@
+## GYB has [moved to GitHub](http://git.io/gyb). Use [http://git.io/gyb](http://git.io/gyb) from now on! ##
